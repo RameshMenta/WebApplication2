@@ -1,0 +1,21 @@
+﻿Mono = Monolithic == Simple Arch
+All together BA, DA, UI in one project
+
+
+Layered = 3 - Layer Arc == Multi Layer Arc
+UI
+BAL / BLL
+DAL
+Models
+ViewModels
+InputModels
+Test Proj
+And so on...
+
+
+
+Onion Arc - Clean Arc
+Core Project
+UI Proj
+Test Proj
+

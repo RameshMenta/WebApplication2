@@ -1,0 +1,71 @@
+﻿@page "/MyTableCreate"
+
+@inject MyTableBLL myTableBLL
+<h3>CreateMyTable</h3>
+
+@*----Method 1--------*@
+<EditForm Model="@myTable" @onsubmit="@SaveRecord">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <input type="text" @bind="myTable.name" />
+    <InputText @bind-Value="myTable.name"></InputText>
+
+    <button type="submit">Submit</button>
+    @*<InputText></InputText>
+        <InputCheckbox></InputCheckbox>
+        <input type="checkbox" @bind="name" />
+        <InputDate></InputDate>
+        <input type="datetime" @bind="name" />*@
+</EditForm>
+
+@*----Method 2--------*@
+<EditForm Model="@myTable" @onsubmit="@SaveRecord">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <input type="text" @bind="myTable.name" />
+    <InputText @bind-Value="myTable.name"></InputText>
+
+    <button type="submit">Submit</button>
+
+</EditForm>
+
+@*----Method 3--------*@
+
+<EditForm EditContext="@editContext" Model="@myTable" @onsubmit="@SaveRecord">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <input type="text" @bind="myTable.name" />
+    <InputText @bind-Value="myTable.name"></InputText>
+
+    <button type="submit">Submit</button>
+
+</EditForm>
+
+@code {
+    private EditContext editContext;
+
+    protected override void OnInitialized()
+    {
+        editContext = new EditContext(myTable);
+    }
+
+    public MyTable myTable = new MyTable();
+
+    public async Task SaveRecord()
+    {
+        var isValid = editContext.Validate();
+
+        if (isValid)
+        {
+            await myTableBLL.PostMyTable(myTable);
+        }
+        else
+        {
+            // Your own buzz logic, ex pop up a error message for validtion....
+        }
+
+    }
+}

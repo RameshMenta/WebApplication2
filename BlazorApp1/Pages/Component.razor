@@ -1,0 +1,39 @@
+﻿@page "/MyTableDisp"
+
+@inject MyTableBLL myTableBLL
+
+<h3>Component For - My Table</h3>
+
+@if (myTables == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var myTable in myTables)
+            {
+                <tr>
+                    <td>@myTable.id</td>
+                    <td>@myTable.name.Remove(10)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private IEnumerable<MyTable> myTables;
+
+    protected override async Task OnInitializedAsync()
+    {
+        myTables = await myTableBLL.GetMyTables();
+    }
+}
