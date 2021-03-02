@@ -1,4 +1,3 @@
-using BlazorApp1.Data;
 using DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;

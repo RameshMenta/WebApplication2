@@ -1,0 +1,20 @@
+﻿@page "/MyName"
+@inject MyOwnService myOwnService
+
+<h3>GetMyName</h3>
+<h1>@add1()</h1>
+
+<h1>@MyName</h1>
+
+@code {
+    private string MyName { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        MyName = await myOwnService.GetMyOwnName();
+    }
+
+    private int add1()
+    {
+        return 2 + 2;
+    }
+}
