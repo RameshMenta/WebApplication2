@@ -1,1 +1,28 @@
 ﻿git clone https://github.com/RameshMenta/WebApplication2.git
+
+Packages/Libraries/Frameworks
+
+Nuget - C#
+Entity Framework/Core --> 
+CORS <3 --> 
+Newtownsoft JSON --> System.Text
+XUnit --> Test
+NUnit --> Test
+AutoMapper --> DTO to DTO
+PowerTools --> Scaffold your DB first
+
+-------------------------------------
+js/css
+WoW
+
+Bootstrap
+Ant Design
+jspdf --> Generate PDF files from you browser
+jspdf-autotable
+moment --> All kinds of datetime ops
+sweetalert2 --> animated alerts
+xlsx --> import/export to excel
+ag-grid --> display in grid/excel format
+datatables.net --> grid
+jquery-ui --> ui
+animate --> animates you web elements
