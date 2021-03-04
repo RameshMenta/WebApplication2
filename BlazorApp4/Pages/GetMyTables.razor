@@ -1,0 +1,37 @@
+﻿@page "/GetMyTable"
+@inject HttpClient Http
+
+<h3>GetMyTables</h3>
+
+<h1>id: @myTable.id</h1>
+<h4>Name: @name</h4>
+
+
+@code {
+    public int id { get; set; }
+    public string name { get; set; }
+
+    MyTable myTable = new MyTable();
+    public class MyTable
+    {
+        public int id { get; set; }
+        public string name { get; set; }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        // myTable = await Http.GetFromJsonAsync<MyTable>("sample-data/weather.json");
+        /*myTable = await Http.GetFromJsonAsync<MyTable>("https://localhost:5001/api/mytables/1");
+
+        id = myTable.id;
+        name = myTable.name;*/
+
+        var myTables = await Http.GetFromJsonAsync<List<MyTable>>("https://localhost:5001/api/mytables");
+
+        myTable = myTables.Where(w => w.name == "Ramesh").FirstOrDefault();
+
+        name = myTable.name;
+
+    }
+
+}

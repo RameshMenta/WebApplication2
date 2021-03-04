@@ -1,0 +1,46 @@
+﻿@page "/SaveMyTable"
+@inject HttpClient Http
+
+    <h3>SaveMyTable</h3>
+
+    <!--<EditForm Model="@myTable" @onsubmit="@SaveRecord">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <input type="text" @bind="myTable.name" />
+        <InputText @bind-Value="myTable.name"></InputText>
+
+        <button type="submit">Submit</button>-->
+        @*<InputText></InputText>
+            <InputCheckbox></InputCheckbox>
+            <input type="checkbox" @bind="name" />
+            <InputDate></InputDate>
+            <input type="datetime" @bind="name" />*@
+    <!--</EditForm>-->
+
+    <input type="text" @bind="myTable.name" />
+
+    <button type="submit"  @onclick="@SaveRecord">Submit</button>
+
+    <h1>Saved Record Value is (PK): @pk</h1>
+
+    @code {
+        public int pk { get; set; }
+        MyTable myTable = new MyTable();
+        MyTable myTableRe = new MyTable();
+        public class MyTable
+        {
+            public int id { get; set; }
+            public string name { get; set; }
+        }
+
+        public async Task SaveRecord()
+        {
+            var msg = await Http.PostAsJsonAsync("https://localhost:5001/api/mytables", myTable);
+
+            Console.WriteLine(msg);
+
+            // await Http.DeleteAsync($"api/TodoItems/{id}");
+            // pk = msg.id;
+        }
+    }
